@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import database from "../database.json";
-//import helper from "../bankHelperFunctions";
+import helper from "../bankHelperFunctions";
 
 export const UserContext = createContext();
 

@@ -6,7 +6,7 @@ import UserContextProvider from "./contexts/UserContext";
 
 function App() {
   return (
-    <div className="app container">
+    <div className="app">
       <UserContextProvider>
         <Router>
           <Auth />

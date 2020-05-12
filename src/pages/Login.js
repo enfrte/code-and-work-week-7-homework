@@ -31,16 +31,20 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div><p style={{color:"red"}}>{incorrectLogin}</p></div>
+    <div className="login container">
+
       <form onSubmit={handleSubmit}>
+
           <h3 className="mb-3">Sign In</h3>
+
+          <div><p style={{color:"red"}}>{incorrectLogin}</p></div>
+          
           <div className="form-group">
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <input type="text" className="form-control mt-2 mb-2" value={username} placeholder="Enter username" onChange={(e) => setUsername(e.target.value)} required/>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <input type="password" className="form-control mt-2" value={password} placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} required/>
               </div>
             </div>
@@ -48,11 +52,11 @@ function Login() {
 
           <div className="form-group">
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <button type="submit" className="btn btn-success btn-block mt-2 mb-2">Submit</button>
               </div>
-              <div className="col-md-6">
-                <a className="btn btn-primary btn-block mt-2" href="/" role="button">Register</a>
+              <div className="col-md-12">
+                <a href="/register" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Register</a>
               </div>
             </div>
           </div>

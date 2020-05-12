@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import { useParams } from "react-router-dom";
 import Nav from "./Nav";
-import Login from "../pages/Login";
 
 // Control data access flow 
 function Auth() {
@@ -18,9 +17,9 @@ function Auth() {
 	//console.log("params", params);
 
 		return (
-			<>
+			<div className="auth">
 				<Nav />
-			</>
+			</div>
 		);
 
 }

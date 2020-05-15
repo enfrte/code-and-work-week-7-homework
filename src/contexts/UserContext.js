@@ -1,12 +1,22 @@
 import React, { createContext, useState } from 'react';
-import database from "../database.json";
-import helper from "../bankHelperFunctions";
 
 export const UserContext = createContext();
 
 const UserContextProvider = (props) => {
-	//console.log(helper.helpText);
-	const [db, setDatabase] = useState(database);
+	
+	const database = [
+		{
+			"id":1585844765400,
+			"username": "leon",
+			"name":"Leon Ford",
+			"balance":100,
+			"password":"qwerty",
+			"fund_requests":[]
+		},
+		{"id":1585845030433,"username":"tarja","name":"Tarja Ford","balance":200,"password":"qwerty","fund_requests":[]}
+	];
+
+	const [db, setDb] = useState(database);
 	//console.log("database", db);
 
 	const [user, setUser] = useState(null);
@@ -21,7 +31,7 @@ const UserContextProvider = (props) => {
 				loggedIn, setLoggedIn,
 				authToken, setAuthToken,
 				userToken, setUserToken,
-				db, setDatabase
+				db, setDb
 			}}>
 				{props.children}
 			</UserContext.Provider>

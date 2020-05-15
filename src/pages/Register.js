@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../contexts/UserContext';
-import { saveToDb, generateId } from "../bankHelperFunctions";
+import { BrowserRouter as Route, NavLink, Link, useHistory, Redirect } from 'react-router-dom';
+import Login from "./Login";
 
 function Register() {
-  const { db } = useContext(UserContext);
+  const { db, setDb } = useContext(UserContext);
   const { user, setUser } = useContext(UserContext);
 
   const [incorrectLogin, setRegisterError] = useState('');
@@ -11,12 +12,24 @@ function Register() {
 	const [password, setPassword] = useState('');
 	const [firstname, setFirstname] = useState('');
 	const [lastname, setLastname] = useState('');
-	const [initialDeposit, setInitialDeposit] = useState('');	
-	
+  const [initialDeposit, setInitialDeposit] = useState('');	
+    
+  console.log("db", db);
+
+  let history = useHistory();
+  const routeChange = () => {
+    history.push("/login");
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     verifyRegister(firstname, lastname, username, password, initialDeposit);
   }
+
+  const saveToDb = (jsObj) => {
+    setDb([...db, jsObj])
+    console.log('Saved to disk');	
+  };
 
   // things only change after component rerender
   useEffect(() => {
@@ -33,19 +46,16 @@ function Register() {
 		}
 		// prepare user object 
 		const userObject = 	{
-			"id": generateId,
+			"id": new Date().valueOf(),
 			"username": username,
 			"name": firstname + lastname,
-			"balance": initialDeposit,
+			"balance": parseInt(initialDeposit),
 			"password": password,
 			"fund_requests":[]
 		};
 		// add user to the db
-		// https://stackoverflow.com/questions/55301477/fs-writefile-is-not-working-on-my-reactjs-nodejs-app
-		// saveToDb("../database.json", userObject); // broken with fs package
-		// see saveToDb() in bankHelperFunctions.js
-		setUser(userObjectArray[0]); // set user as current user
-    
+		saveToDb(userObject);
+    //setUser(userObjectArray[0]); // set user as current user (or perhaps better to make them log in)
   };
 
   return (
@@ -93,7 +103,10 @@ function Register() {
                 <button type="submit" className="btn btn-success btn-block mt-2 mb-2">Register</button>
               </div>
               <div className="col-md-6">
-								<a href="/login" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Back to Login</a>
+								<a href="/login" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Back to Login</a> 
+                <NavLink to="/login">Login1</NavLink>
+                <Link to="/login">Login2</Link>
+                <button type="button" onClick={routeChange}>Login3</button>
               </div>
             </div>
           </div>

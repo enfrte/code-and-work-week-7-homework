@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../contexts/UserContext';
-import { BrowserRouter as Route, NavLink, Link, useHistory, Redirect } from 'react-router-dom';
+import { BrowserRouter as Route, Link, useHistory, Redirect } from 'react-router-dom';
 import Login from "./Login";
 
 function Register() {
@@ -15,11 +15,12 @@ function Register() {
   const [initialDeposit, setInitialDeposit] = useState('');	
     
   console.log("db", db);
-
+  /*
   let history = useHistory();
   const routeChange = () => {
     history.push("/login");
   }
+  */
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -104,9 +105,7 @@ function Register() {
               </div>
               <div className="col-md-6">
                 <a href="/login" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Back to Login</a> 
-                <NavLink to="/login">Login1</NavLink>
-                <Link to="/login">Login2</Link>
-                <button type="button" onClick={routeChange}>Login3</button>
+                {/*<button type="button" onClick={routeChange}>Alt. Back to Login</button>*/}
               </div>
             </div>
           </div>

@@ -103,7 +103,7 @@ function Register() {
                 <button type="submit" className="btn btn-success btn-block mt-2 mb-2">Register</button>
               </div>
               <div className="col-md-6">
-								<a href="/login" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Back to Login</a> 
+                <a href="/login" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Back to Login</a> 
                 <NavLink to="/login">Login1</NavLink>
                 <Link to="/login">Login2</Link>
                 <button type="button" onClick={routeChange}>Login3</button>

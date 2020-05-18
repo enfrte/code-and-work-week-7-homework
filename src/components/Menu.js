@@ -13,7 +13,10 @@ function Menu() {
 						<Link to="/deposit">Deposit</Link>|
 					</li>
 					<li>
-						<Link to="/withdraw">Withdraw</Link>
+						<Link to="/withdraw">Withdraw</Link>|
+					</li>
+					<li>
+						<Link to="/login">Logout</Link>
 					</li>
 				</ul>
 			</nav>

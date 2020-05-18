@@ -48,12 +48,12 @@ nav ul {
   display: flex;
   list-style: none;
   padding: 0;
-
 }
 
 .main {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
@@ -61,6 +61,22 @@ nav ul {
 
 .bank-info img {
   width: 165px;
+}
+
+.home.container {
+  max-width: 400px;
+}
+
+.home.container img {
+  float: left;
+}
+
+.bank-logo-medium {
+  width: 165px;
+}
+
+.bank-logo-small {
+  width: 90px;
 }
 
 .bank-info {
@@ -74,6 +90,12 @@ nav ul {
   align-items: center;
   justify-content: center;
   max-width: 350px;
+}
+
+.login-group-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .app nav ul li a {

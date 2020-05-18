@@ -5,6 +5,11 @@ function Login() {
   const { db } = useContext(UserContext);
   const { user, setUser } = useContext(UserContext);
 
+  // If user accesses/is directed to the login page, log them out
+  useEffect(() => {
+    //setUser({}); 
+  }, [setUser]);
+
   const [incorrectLogin, setIncorrectLogin] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

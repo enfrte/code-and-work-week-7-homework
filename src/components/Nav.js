@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import { isLoggedIn } from "../helpers/helper-functions";
 

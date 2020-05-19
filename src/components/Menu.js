@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Route, Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function Menu() {
   return (

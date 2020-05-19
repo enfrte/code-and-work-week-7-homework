@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../contexts/UserContext';
-import { BrowserRouter as Route, Link, useHistory, Redirect, withRouter, Switch } from 'react-router-dom';
-import Login from "./Login";
+import { Route, Link, useHistory, Redirect, withRouter, Switch } from 'react-router-dom';
 
 function Register() {
   const { db, setDb } = useContext(UserContext);
@@ -104,9 +103,11 @@ function Register() {
                 <button type="submit" className="btn btn-success btn-block mt-2 mb-2">Register</button>
               </div>
               <div className="col-md-6">
+                {/*
                 <a href="/login" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Back to Login</a> 
                 <button type="button" onClick={routeChange}>Alt. Back to Login</button>
-                <Link to="/login">...Login</Link>
+                */}
+                <Link to="/login" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Back to Login</Link>
                 <Switch><Route path="/login"></Route></Switch>
               </div>
             </div>

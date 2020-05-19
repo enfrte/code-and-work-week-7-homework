@@ -10,7 +10,8 @@ function Deposit() {
     console.log("amount", amount, typeof amount);
     //setUser({...user, balance: user.balance + amount});
     setUser((prev) => ({...user, balance: prev.balance + amount}));
-  }
+    // note this does not update the database, so the user will start with their joining amount after they log back in again
+  };
 
   console.log("user", user);
 

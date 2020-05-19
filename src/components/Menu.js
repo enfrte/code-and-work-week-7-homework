@@ -7,7 +7,7 @@ function Menu() {
 			<nav>
 				<ul>
 					<li>
-						<NavLink exact to="/" activeClassName="is-active">Home</NavLink>
+						<NavLink to="/home" activeClassName="is-active">Home</NavLink>
 					</li>
 					<li>
 						<NavLink to="/deposit" activeClassName="is-active">Deposit</NavLink>

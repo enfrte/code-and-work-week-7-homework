@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../contexts/UserContext';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
   const { db } = useContext(UserContext);
@@ -7,7 +8,7 @@ function Login() {
 
   // If user accesses/is directed to the login page, log them out
   useEffect(() => {
-    setUser({}); 
+    setUser({});
   }, [setUser]);
 
   const [incorrectLogin, setIncorrectLogin] = useState('');
@@ -24,12 +25,21 @@ function Login() {
 		console.log("user: ", user);
 	}, [user]);
 
+
+  const history = useHistory();
+  const redirectLogin = () => {
+    //console.log("history", history);
+    history.push("/home");
+  }
+
   // checks if a database user has been returned 
   const verifyLogin = (username, password) => {
     const userObjectArray = db.filter(current => current.username === username && current.password === password);
     if (userObjectArray.length === 1) {
       console.log("result", userObjectArray[0]);
       setUser(userObjectArray[0]); 
+      // redirect the user to home component 
+      redirectLogin(); 
       return;
     }
     setIncorrectLogin("Wrong Username or Password");

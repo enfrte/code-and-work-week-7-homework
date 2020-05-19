@@ -15,7 +15,7 @@ function Nav() {
 	const { user } = useContext(UserContext);
 
 	console.log("Nav isLoggedIn", isLoggedIn(user));
-	console.log("---", user, isLoggedIn, user === isLoggedIn);
+	console.log("---", user, user === isLoggedIn);
   return (
 		<main className="main">
 			{ isLoggedIn(user) ? <Menu /> : "" }
@@ -23,7 +23,10 @@ function Nav() {
 			{ /* Conditional routing - If a user object exists, give the user access to the other pages, else send them to the login */
 				!isLoggedIn(user) ?
 					<Switch>
-						<Route path="/register" render={ (routeProps) => (<Register {...routeProps} />) } />
+						{/*<Route path="/register" render={ (routeProps) => (<Register {...routeProps} />) } />*/}
+						<Route path="/register">
+							<Register />
+						</Route>
 						<Route path="/login">
 							<div className="login-group-container">
 								<BankInfo />
@@ -39,9 +42,6 @@ function Nav() {
 					</Switch>
 				: 
 					<Switch>
-						<Route path="/register">
-							<Register />
-						</Route>
 						<Route path="/deposit">
 							<Deposit />
 						</Route>
@@ -53,6 +53,9 @@ function Nav() {
 								<BankInfo />
 								<Login />
 							</div>
+						</Route>
+						<Route path="/home">
+							<Home /> 
 						</Route>
 						<Route exact path="/">
 							<Home /> 

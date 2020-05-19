@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../contexts/UserContext';
-import { Route, Link, useHistory, Redirect, withRouter, Switch } from 'react-router-dom';
+import { Route, Link, useHistory, Switch } from 'react-router-dom';
 
 function Register() {
   const { db, setDb } = useContext(UserContext);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const [incorrectLogin, setRegisterError] = useState('');
   const [username, setUsername] = useState('');
@@ -15,9 +15,9 @@ function Register() {
     
   console.log("db", db);
   
-  let history = useHistory();
-  const routeChange = () => {
-    console.log("history", history);
+  const history = useHistory();
+  const redirectLogin = () => {
+    //console.log("history", history);
     history.push("/login");
   }
 
@@ -26,6 +26,7 @@ function Register() {
     verifyRegister(firstname, lastname, username, password, initialDeposit);
   }
 
+  // save the user to the database
   const saveToDb = (jsObj) => {
     setDb([...db, jsObj])
     console.log('Saved to disk');	
@@ -33,7 +34,7 @@ function Register() {
 
   // things only change after component rerender
   useEffect(() => {
-		console.log("user: ", user);
+		console.log("Register - user: ", user);
 	}, [user]);
 
   // checks if a database user has been returned 
@@ -48,14 +49,15 @@ function Register() {
 		const userObject = 	{
 			"id": new Date().valueOf(),
 			"username": username,
-			"name": firstname + lastname,
+			"name": firstname + " " + lastname,
 			"balance": parseInt(initialDeposit),
 			"password": password,
 			"fund_requests":[]
 		};
 		// add user to the db
-		saveToDb(userObject);
-    //setUser(userObjectArray[0]); // set user as current user (or perhaps better to make them log in)
+    saveToDb(userObject);
+    // redirect user to login (setting a flash message would be nice)
+    redirectLogin();
   };
 
   return (
@@ -105,7 +107,7 @@ function Register() {
               <div className="col-md-6">
                 {/*
                 <a href="/login" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Back to Login</a> 
-                <button type="button" onClick={routeChange}>Alt. Back to Login</button>
+                <button type="button" onClick={redirectLogin}>Example of history.push</button>
                 */}
                 <Link to="/login" className="btn btn-primary btn-block mt-2 active" role="button" aria-pressed="true">Back to Login</Link>
                 <Switch><Route path="/login"></Route></Switch>

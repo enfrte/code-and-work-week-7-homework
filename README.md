@@ -1,4 +1,4 @@
-# Week 7 homework
+# Week 7 homework - React Bank app
 
 **Status:** Complete. 
 

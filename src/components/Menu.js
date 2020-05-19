@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Route, Link } from 'react-router-dom';
+import { BrowserRouter as Route, Link, NavLink } from 'react-router-dom';
 
 function Menu() {
   return (
@@ -7,13 +7,13 @@ function Menu() {
 			<nav>
 				<ul>
 					<li>
-						<Link to="/">Home</Link>|
+						<NavLink exact to="/" activeClassName="is-active">Home</NavLink>
 					</li>
 					<li>
-						<Link to="/deposit">Deposit</Link>|
+						<NavLink to="/deposit" activeClassName="is-active">Deposit</NavLink>
 					</li>
 					<li>
-						<Link to="/withdraw">Withdraw</Link>|
+						<NavLink to="/withdraw" activeClassName="is-active">Withdraw</NavLink>
 					</li>
 					<li>
 						<Link to="/login">Logout</Link>

@@ -31,8 +31,10 @@ function Nav() {
 							</div>
 						</Route>
 						<Route path="*">
-							<BankInfo />
-							<Login />
+							<div className="login-group-container">
+								<BankInfo />
+								<Login />
+							</div>
 						</Route>
 					</Switch>
 				: 

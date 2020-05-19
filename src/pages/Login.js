@@ -7,7 +7,7 @@ function Login() {
 
   // If user accesses/is directed to the login page, log them out
   useEffect(() => {
-    //setUser({}); 
+    setUser({}); 
   }, [setUser]);
 
   const [incorrectLogin, setIncorrectLogin] = useState('');
